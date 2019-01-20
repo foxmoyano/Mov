@@ -1,6 +1,7 @@
 package cl.foxcorp.mov.service.impl;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,25 @@ public class SerieServiceImpl implements SerieService
 	{
 		return serieRepository.getAllSeries();
 	}
+	
+	@Override
+	public boolean addSerie(Serie serie) 
+	{
+		if (serieRepository.serieExists(serie.getId())) 
+		{
+			return false;
+		} 
+		else 
+		{
+			serieRepository.addSerie(serie);
+			return true;
+		}		
+	}
+	
+	@Override
+	public void updateSerie(Serie serie) 
+	{
+		serieRepository.updateSerie(serie);		
+	}	
 
 }

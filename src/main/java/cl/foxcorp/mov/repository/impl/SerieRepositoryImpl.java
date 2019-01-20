@@ -7,6 +7,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+
 import cl.foxcorp.mov.entity.Serie;
 import cl.foxcorp.mov.repository.SerieRepository;
 
@@ -24,5 +25,35 @@ public class SerieRepositoryImpl implements SerieRepository
 		String hql = "FROM Serie as ser";
 		return (List<Serie>) em.createQuery(hql).getResultList();
 	}
+	
+	@Override
+	public void addSerie(Serie serie)
+	{
+		em.persist(serie);
+	}
+	
+	@Override
+	public boolean serieExists(int id) 
+	{
+		String hql = "FROM Serie as ser WHERE ser.id = :id";
+		int count = em.createQuery(hql).setParameter("id", id).getResultList().size();
+		return count > 0 ? true : false;
+	}
+	
+	@Override
+	public void updateSerie(Serie serie) 
+	{
+		Serie ser = getSerieById(serie.getId());
+		ser.setName(serie.getName());
+		ser.setType(serie.getType());
+		ser.setEmitter(serie.getEmitter());
+		em.flush();		
+	}
+	
+	@Override
+	public Serie getSerieById(int id) 
+	{
+		return em.find(Serie.class, id);
+	}	
 
 }
