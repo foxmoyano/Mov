@@ -10,7 +10,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="emitter")
+@Table(name="emitters")
 public class Emitter 
 {
 	@Id

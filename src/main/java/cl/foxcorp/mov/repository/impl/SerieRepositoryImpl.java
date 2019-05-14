@@ -45,8 +45,13 @@ public class SerieRepositoryImpl implements SerieRepository
 	{
 		Serie ser = getSerieById(serie.getId());
 		ser.setName(serie.getName());
-		ser.setType(serie.getType());
 		ser.setEmitter(serie.getEmitter());
+		ser.setType(serie.getType());
+		ser.setSeasons(serie.getSeasons());
+		ser.setState(serie.getState());
+		ser.setFrom(serie.getFrom());
+		ser.setTo(serie.getTo());
+		
 		em.flush();		
 	}
 	
