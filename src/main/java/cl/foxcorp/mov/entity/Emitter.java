@@ -4,23 +4,24 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="emitters")
-public class Emitter 
-{
+@Table(name = "emitters")
+public class Emitter {
 	@Id
-	@Column(name="id")
+	@GeneratedValue
+	@Column(name = "id")
 	private int id;
-	
-	@Column(name="name", nullable = false)
-	private String name;	
-	
-	@Column(name="createDate", nullable = false)
+
+	@Column(name = "name", nullable = false)
+	private String name;
+
+	@Column(name = "createDate", nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar createDate;
 
@@ -47,5 +48,15 @@ public class Emitter
 	public void setCreateDate(Calendar createDate) {
 		this.createDate = createDate;
 	}
-		
+
+	public Emitter(int id, String name, Calendar createDate) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.createDate = createDate;
+	}
+
+	public Emitter() {
+
+	}
 }
