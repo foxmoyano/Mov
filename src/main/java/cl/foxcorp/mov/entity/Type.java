@@ -2,6 +2,7 @@ package cl.foxcorp.mov.entity;
 
 import java.util.Calendar;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,8 @@ public class Type {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "createDate", nullable = false)
+	@Basic	
+	@Column(name = "createDate", nullable = false, insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar createDate;
 

@@ -31,4 +31,11 @@ logging:
         type:
           descriptor:
             sql:
-              BasicBinder: TRACE        
+              BasicBinder: TRACE    
+              
+    springframework:
+      boot:
+        autoconfigure:
+          security= INFO          
+  thymeleaf:
+    cache: false          
