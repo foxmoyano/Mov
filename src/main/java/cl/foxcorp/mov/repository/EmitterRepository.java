@@ -1,10 +1,14 @@
 package cl.foxcorp.mov.repository;
 
-import java.util.List;
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import cl.foxcorp.mov.entity.Emitter;
 
-public interface EmitterRepository 
+@Repository("emitterRepository")
+public interface EmitterRepository extends JpaRepository<Emitter, Serializable> 
 {
-	public List<Emitter> getAllEmitter();
+	public abstract Emitter findEmitterById(int id);
 }

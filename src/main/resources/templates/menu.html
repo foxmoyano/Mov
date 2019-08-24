@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 	<head>
+    	<meta charset="utf-8"/>
+    	<title>.: Woff :.</title>
+    
+    	<!-- Bootstrap core CSS -->
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    	<!-- Custom styles for this template -->
+    	<link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+    	
+    	<!-- jQuery -->
+		<script src="/js/jquery-3.2.1.min.js"></script>    	 		
+ 		 		
+ 		<script type="text/javascript">	 		
+	 		function logout() {
+	 			$('#form').submit();
+	 		}
+ 		</script> 
+	</head>
+
+ 	<body>	
+		<div class="container">
+			<h1>Mantenedores</h1>
+			<br/>
+			<form id="form" th:action="@{/mov/logout}" method="POST">
+			</form>					
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <a class="navbar-brand" href="#">Website Woff</a>
+			    </div>
+			    <ul class="nav navbar-nav">
+			      <li><a href="#" th:href="@{/mov/showTypes}">Tipos</a></li>
+			      <li><a href="#" th:href="@{/mov/showEmitters}">Canales</a></li>
+			      <li><a href="#" th:href="@{/mov/showSeries}">Series</a></li>
+			      <li><a href="#" th:href="@{/mov/showMovies}">Peliculas</a></li>
+			    </ul>
+			    <ul class="nav navbar-nav navbar-right">
+			      <li>
+			      	<a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;<span th:text="${username}"></span></a>
+			      </li>
+			      <li>			      	
+			      	<a href="javascript:logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a>			      	
+			    </ul>
+			  </div>
+			</nav>
+		</div>		
+	</body>
+</html>

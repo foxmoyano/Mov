@@ -51,7 +51,7 @@ public class TypeController
 		return mav;
 	}
 	
-	@PostMapping("addType")
+	@PostMapping("/addType")
 	public String addType(@ModelAttribute(name="typeModel") TypeModel typeModel, Model model) {
 		log.info("METHOD: addType() -- PARAMS: " + typeModel.toString());
 		if ( null != typeService.addType(typeModel)) 
@@ -78,7 +78,7 @@ public class TypeController
 		return ViewConstant.TYPE_FORM;
 	}
 	
-	@GetMapping("/cancel")
+	@GetMapping("/cancelType")
 	public String cancel() {
 		return "redirect:/mov/showTypes";
 	}	

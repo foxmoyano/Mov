@@ -20,10 +20,10 @@ public class Serie {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = false, length = 100)
 	private String name;
 
-	@Column(name = "createDate", nullable = false)
+	@Column(name = "createDate", nullable = false, insertable = false, updatable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar createDate;
 
@@ -36,20 +36,20 @@ public class Serie {
 	private Emitter emitter;
 
 	@Column(name = "seasons", nullable = false)
-	private int seasons;
+	private Long seasons;
 
 	@JoinColumn(name = "state", nullable = false, referencedColumnName = "code")
 	@ManyToOne
 	private State state;
 
 	@Column(name = "yearFrom", nullable = false)
-	private int from;
+	private Long from;
 
 	@Column(name = "yearTo", nullable = false)
-	private int to;
+	private Long to;
 
 	@Column(name = "episodes", nullable = false)
-	private int episodes;
+	private Long episodes;
 
 	@Column(name = "created", nullable = false)
 	private String created;
@@ -57,11 +57,11 @@ public class Serie {
 	@Column(name = "origin", nullable = false)
 	private String origin;
 
-	public int getEpisodes() {
+	public Long getEpisodes() {
 		return episodes;
 	}
 
-	public void setEpisodes(int episodes) {
+	public void setEpisodes(Long episodes) {
 		this.episodes = episodes;
 	}
 
@@ -81,27 +81,27 @@ public class Serie {
 		this.origin = origin;
 	}
 
-	public int getFrom() {
+	public Long getFrom() {
 		return from;
 	}
 
-	public void setFrom(int from) {
+	public void setFrom(Long from) {
 		this.from = from;
 	}
 
-	public int getTo() {
+	public Long getTo() {
 		return to;
 	}
 
-	public void setTo(int to) {
+	public void setTo(Long to) {
 		this.to = to;
 	}
 
-	public int getSeasons() {
+	public Long getSeasons() {
 		return seasons;
 	}
 
-	public void setSeasons(int seasons) {
+	public void setSeasons(Long seasons) {
 		this.seasons = seasons;
 	}
 
@@ -153,8 +153,8 @@ public class Serie {
 		this.createDate = createDate;
 	}
 
-	public Serie(int id, String name, Calendar createDate, Type type, Emitter emitter, int seasons, State state,
-			int from, int to, int episodes, String created, String origin) {
+	public Serie(int id, String name, Calendar createDate, Type type, Emitter emitter, Long seasons, State state,
+			Long from, Long to, Long episodes, String created, String origin) {
 		super();
 		this.id = id;
 		this.name = name;

@@ -13,15 +13,16 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "emitters")
 public class Emitter {
+	
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "name", nullable = false)
+	@Column(name = "name", nullable = false, length = 50)
 	private String name;
 
-	@Column(name = "createDate", nullable = false)
+	@Column(name = "createDate", nullable = false, insertable = false, updatable = false, columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar createDate;
 

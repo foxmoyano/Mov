@@ -1,14 +1,19 @@
 package cl.foxcorp.mov.repository;
 
-import java.util.List;
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import cl.foxcorp.mov.entity.Serie;
 
-public interface SerieRepository 
+@Repository("serieRepository")
+public interface SerieRepository extends JpaRepository<Serie, Serializable>
 {
-	public List<Serie> getAllSeries();
+	public abstract Serie findSerieById(int id);
+	/*public List<Serie> getAllSeries();
 	public void addSerie(Serie serie);
 	public boolean serieExists(int id);
 	public void updateSerie(Serie serie);
-	public Serie getSerieById(int id);
-	
+	public Serie getSerieById(int id);*/
 }

@@ -25,8 +25,8 @@ public class TypeServiceImpl implements TypeService
 	private TypeConverter typeConverter;	
 	
 	@Override
-	public List<Type> getAllTypes() {
-		return null;
+	public List<Type> getAllTypes() {		
+		return typeRepository.findAll();
 	}
 
 	@Override
@@ -35,6 +35,7 @@ public class TypeServiceImpl implements TypeService
 		List<TypeModel> lstTypeModel = new ArrayList<TypeModel>();
 		for(Type type : types)
 			lstTypeModel.add( typeConverter.convertType2TypeModel(type));
+		
 		return lstTypeModel;
 	}
 

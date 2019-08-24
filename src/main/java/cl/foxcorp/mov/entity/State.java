@@ -14,10 +14,10 @@ public class State {
 	@Column(name = "id")
 	private int id;
 
-	@Column(name = "code")
+	@Column(name = "code", length = 3)
 	private String code;
 
-	@Column(name = "description", nullable = false)
+	@Column(name = "description", nullable = false, length = 50)
 	private String description;
 
 	public String getCode() {

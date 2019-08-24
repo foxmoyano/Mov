@@ -11,9 +11,9 @@
 </head>
 <body>	
 	<div class="container">
-		<h1>Type Form</h1>
+		<h1>Emitter Form</h1>
 		<br/>
-		<form action="#" th:action=" @{/mov/addType}" th:object="${typeModel}" method="post">
+		<form action="#" th:action=" @{/mov/addEmitter}" th:object="${emitterModel}" method="post">
 			<input type="hidden" th:field="*{id}" ></input>
 			Name: <input type="text" class="form-control" th:field="*{name}" th:value="name"></input>
 			<br/>
@@ -26,7 +26,7 @@
 					</button>
 				</div>
 				<div class="col-sm-2">				
-					<a href="#" th:href="@{/mov/cancelType}">
+					<a href="#" th:href="@{/mov/cancelEmitter}">
 						<button class="btn btn-lg btn-primary btn-block" type="button">
 							<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
 						</button>	

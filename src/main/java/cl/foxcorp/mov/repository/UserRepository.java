@@ -9,5 +9,6 @@ import cl.foxcorp.mov.entity.User;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Serializable> {
+	
 	public abstract User findByUsername(String username);
 }
