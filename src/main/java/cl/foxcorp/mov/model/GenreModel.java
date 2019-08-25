@@ -1,16 +1,16 @@
 package cl.foxcorp.mov.model;
 
-public class TypeModel {
+public class GenreModel {
 	private int id;
 	private String name;
 
-	public TypeModel(int id, String name) {
+	public GenreModel(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public TypeModel() {
+	public GenreModel() {
 	}
 
 	public int getId() {

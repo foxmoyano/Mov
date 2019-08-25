@@ -11,8 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "types")
-public class Type {
+@Table(name = "genres")
+public class Genre {
 
 	@Id
 	@GeneratedValue
@@ -50,15 +50,14 @@ public class Type {
 		this.createDate = createDate;
 	}
 
-	public Type(int id, String name, Calendar createDate) {
+	public Genre(int id, String name, Calendar createDate) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.createDate = createDate;
 	}
 
-	public Type() {
-
+	public Genre() {
 	}
 
 }

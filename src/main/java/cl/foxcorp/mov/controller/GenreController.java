@@ -19,68 +19,68 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import cl.foxcorp.mov.entity.Type;
-import cl.foxcorp.mov.model.TypeModel;
-import cl.foxcorp.mov.service.TypeService;
+import cl.foxcorp.mov.entity.Genre;
+import cl.foxcorp.mov.model.GenreModel;
+import cl.foxcorp.mov.service.GenreService;
 import cl.foxcorp.mov.util.ViewConstant;
 
 @Controller
 @RequestMapping("mov")
-public class TypeController
+public class GenreController
 {
-	private static final Log log = LogFactory.getLog(TypeController.class);
+	private static final Log log = LogFactory.getLog(GenreController.class);
 	
 	@Autowired
-	@Qualifier("typeService")
-	private TypeService typeService;
+	@Qualifier("genreService")
+	private GenreService genreService;
 	
-	@GetMapping("types")
-	public ResponseEntity<List<Type>> getAllTypes()
+	@GetMapping("genres")
+	public ResponseEntity<List<Genre>> getAllGenres()
 	{
-		List<Type> list = typeService.getAllTypes();
-		return new ResponseEntity<List<Type>>(list, HttpStatus.OK);
+		List<Genre> list = genreService.getAllGenres();
+		return new ResponseEntity<List<Genre>>(list, HttpStatus.OK);
 	}
 	
-	@GetMapping("/showTypes")
-	public ModelAndView showTypes() {
+	@GetMapping("/showGenres")
+	public ModelAndView showGenres() {
 		ModelAndView mav = new ModelAndView(ViewConstant.TYPES);
 		
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		mav.addObject("username", user.getUsername());
-		mav.addObject("types", typeService.listAllTypes());
+		mav.addObject("genres", genreService.listAllGenres());
 		return mav;
 	}
 	
-	@PostMapping("/addType")
-	public String addType(@ModelAttribute(name="typeModel") TypeModel typeModel, Model model) {
-		log.info("METHOD: addType() -- PARAMS: " + typeModel.toString());
-		if ( null != typeService.addType(typeModel)) 
+	@PostMapping("/addGenre")
+	public String addGenre(@ModelAttribute(name="genreModel") GenreModel genreModel, Model model) {
+		log.info("METHOD: addGenre() -- PARAMS: " + genreModel.toString());
+		if ( null != genreService.addGenre(genreModel)) 
 			model.addAttribute("result", 1);
 		else
 			model.addAttribute("result", 0);
 		
-		return "redirect:/mov/showTypes";		
+		return "redirect:/mov/showGenres";		
 	}
 	
-	@GetMapping("/removeType")
-	public ModelAndView removeType(@RequestParam(name="id", required=true) int id) {
-		typeService.removeType(id);
-		return this.showTypes();		
+	@GetMapping("/removeGenre")
+	public ModelAndView removeGenre(@RequestParam(name="id", required=true) int id) {
+		genreService.removeGenre(id);
+		return this.showGenres();		
 	}
 	
-	@GetMapping("typeForm")
+	@GetMapping("genreForm")
 	public String redirectTypeForm(@RequestParam(name="id", required=false) int id, Model model) {
-		TypeModel type = new TypeModel();
+		GenreModel genre = new GenreModel();
 		if ( id != 0 )
-			type = typeService.findTypeByIdModel(id);
+			genre = genreService.findGenreByIdModel(id);
 		
-		model.addAttribute("typeModel", type);
+		model.addAttribute("genreModel", genre);
 		return ViewConstant.TYPE_FORM;
 	}
 	
-	@GetMapping("/cancelType")
+	@GetMapping("/cancelGenre")
 	public String cancel() {
-		return "redirect:/mov/showTypes";
+		return "redirect:/mov/showGenres";
 	}	
 	
 }

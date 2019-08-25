@@ -21,8 +21,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import cl.foxcorp.mov.entity.Serie;
 import cl.foxcorp.mov.model.SerieModel;
+import cl.foxcorp.mov.service.EmitterService;
+import cl.foxcorp.mov.service.GenreService;
+import cl.foxcorp.mov.service.ParameterService;
 import cl.foxcorp.mov.service.SerieService;
-import cl.foxcorp.mov.service.TypeService;
+import cl.foxcorp.mov.util.Constant;
 import cl.foxcorp.mov.util.ViewConstant;
 
 @Controller
@@ -36,8 +39,16 @@ public class SerieController
 	private SerieService serieService;
 	
 	@Autowired
-	@Qualifier("typeService")
-	private TypeService typeService;
+	@Qualifier("genreService")
+	private GenreService genreService;
+	
+	@Autowired
+	@Qualifier("emitterService")
+	private EmitterService emitterService;
+
+	@Autowired
+	@Qualifier("parameterService")
+	private ParameterService parameterService;
 	
 	@GetMapping("/series")
 	public ResponseEntity<List<Serie>> getAllSeries() 
@@ -80,7 +91,9 @@ public class SerieController
 			serieModel = serieService.findSerieByIdModel(id);
 		
 		model.addAttribute("serieModel", serieModel);		
-		model.addAttribute("types", typeService.listAllTypes());
+		model.addAttribute("genres", genreService.listAllGenres());
+		model.addAttribute("emitters", emitterService.listAllEmitters());
+		model.addAttribute("states", parameterService.listParameters(Constant.PARAM_STATE));
 		
 		return ViewConstant.SERIE_FORM;		
 	}
@@ -109,3 +122,4 @@ public class SerieController
 		return new ResponseEntity<Serie>(serie, HttpStatus.OK);
 	}*/	
 }
+

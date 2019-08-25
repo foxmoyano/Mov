@@ -22,7 +22,7 @@
 
  	<body>	
 		<div class="container">
-			<h1>Mantenedores</h1>
+			<h1> <span th:text="#{title.menu}" /> </h1>
 			<br/>
 			<form id="form" th:action="@{/mov/logout}" method="POST">
 			</form>					
@@ -32,10 +32,10 @@
 			      <a class="navbar-brand" href="#">Website Woff</a>
 			    </div>
 			    <ul class="nav navbar-nav">
-			      <li><a href="#" th:href="@{/mov/showTypes}">Tipos</a></li>
-			      <li><a href="#" th:href="@{/mov/showEmitters}">Canales</a></li>
-			      <li><a href="#" th:href="@{/mov/showSeries}">Series</a></li>
-			      <li><a href="#" th:href="@{/mov/showMovies}">Peliculas</a></li>
+			      <li><a href="#" th:href="@{/mov/showGenres}"> <span th:text="#{title.genres}" /> </a></li>
+			      <li><a href="#" th:href="@{/mov/showEmitters}"> <span th:text="#{title.emitters}" /> </a></li>
+			      <li><a href="#" th:href="@{/mov/showSeries}"> <span th:text="#{title.series}" /> </a></li>
+			      <li><a href="#" th:href="@{/mov/showMovies}"> <span th:text="#{title.movies}" /> </a></li>
 			    </ul>
 			    <ul class="nav navbar-nav navbar-right">
 			      <li>

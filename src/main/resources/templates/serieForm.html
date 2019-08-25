@@ -23,16 +23,50 @@
 					</div>
 					
 					<div class="form-group">				
-						Temporadas: <input type="text" class="form-control" th:field="*{seasons}" th:value="seasons"></input>
+						Seasons: <input type="text" class="form-control" th:field="*{seasons}" th:value="seasons"></input>
 					</div>
 					
 					<div class="form-group">				
-						Género: <select class="form-control" th:field="*{type}">
-						<option value="-1">--Seleccione--</option>
-						<option th:each="tipo : ${types}" th:value="${tipo.id}" th:text="${tipo.name}"></option>
+						Genre: <select class="form-control" th:field="*{genre.codigo}">
+						<option value="-1">-- Choice --</option>
+						<option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
 						</select> 						
 					</div>
 					
+					<div class="form-group">						
+						Creator: <input type="text" class="form-control" th:field="*{created}" th:value="created"></input>
+					</div>
+
+					<div class="form-group">						
+						Episodes: <input type="text" class="form-control" th:field="*{episodes}" th:value="episodes"></input>
+					</div>
+
+					<div class="form-group">						
+						Origin: <input type="text" class="form-control" th:field="*{origin}" th:value="origin"></input>
+					</div>
+
+					<div class="form-group">				
+						Emitter: <select class="form-control" th:field="*{emitter.codigo}">
+						<option value="-1">-- Choice --</option>
+						<option th:each="emitter : ${emitters}" th:value="${emitter.id}" th:text="${emitter.name}"></option>
+						</select> 						
+					</div>					
+
+					<div class="form-group">						
+						YearFrom: <input type="text" class="form-control" th:field="*{yearFrom}" th:value="yearFrom"></input>
+					</div>
+
+					<div class="form-group">						
+						YearTo: <input type="text" class="form-control" th:field="*{yearTo}" th:value="yearTo"></input>
+					</div>
+					
+					<div class="form-group">				
+						State: <select class="form-control" th:field="*{state.codigo}">
+						<option value="-1">-- Choice --</option>
+						<option th:each="state : ${states}" th:value="${state.id}" th:text="${state.description}"></option>
+						</select> 						
+					</div>					
+
 					<br/>
 
 					<div class="panel-body">

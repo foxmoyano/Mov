@@ -27,9 +27,9 @@ public class Serie {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar createDate;
 
-	@JoinColumn(name = "type", nullable = false)
+	@JoinColumn(name = "genre", nullable = false)
 	@ManyToOne
-	private Type type;
+	private Genre genre;
 
 	@JoinColumn(name = "emitter", nullable = false)
 	@ManyToOne
@@ -37,10 +37,10 @@ public class Serie {
 
 	@Column(name = "seasons", nullable = false)
 	private Long seasons;
-
-	@JoinColumn(name = "state", nullable = false, referencedColumnName = "code")
-	@ManyToOne
-	private State state;
+	
+	@JoinColumn(name = "state", nullable = false, referencedColumnName="id")
+	@ManyToOne	
+	private Parameter state;
 
 	@Column(name = "yearFrom", nullable = false)
 	private Long from;
@@ -105,11 +105,11 @@ public class Serie {
 		this.seasons = seasons;
 	}
 
-	public State getState() {
+	public Parameter getState() {
 		return state;
 	}
 
-	public void setState(State state) {
+	public void setState(Parameter state) {
 		this.state = state;
 	}
 
@@ -121,12 +121,12 @@ public class Serie {
 		this.emitter = emitter;
 	}
 
-	public Type getType() {
-		return type;
+	public Genre getGenre() {
+		return genre;
 	}
 
-	public void setType(Type type) {
-		this.type = type;
+	public void setGenre(Genre genre) {
+		this.genre = genre;
 	}
 
 	public int getId() {
@@ -153,13 +153,13 @@ public class Serie {
 		this.createDate = createDate;
 	}
 
-	public Serie(int id, String name, Calendar createDate, Type type, Emitter emitter, Long seasons, State state,
+	public Serie(int id, String name, Calendar createDate, Genre genre, Emitter emitter, Long seasons, Parameter state,
 			Long from, Long to, Long episodes, String created, String origin) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.createDate = createDate;
-		this.type = type;
+		this.genre = genre;
 		this.emitter = emitter;
 		this.seasons = seasons;
 		this.state = state;
